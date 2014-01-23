@@ -30,6 +30,7 @@ abstract class Simulation implements Disposable {
       var fd = Gdx.files.internal(path)
       fd.list(".obj").forEach [m|
          var model = objLoader.loadModel(m)
+         disposables.add(model)         
          var inst = new ModelInstance(model)
          instances.add(inst)
          things.put(m.nameWithoutExtension, inst)
