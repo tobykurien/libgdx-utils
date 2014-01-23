@@ -9,8 +9,10 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch
 import com.badlogic.gdx.graphics.g3d.Environment
 import com.badlogic.gdx.graphics.g3d.ModelBatch
 import com.badlogic.gdx.graphics.g3d.environment.DirectionalLight
+import com.badlogic.gdx.graphics.g3d.utils.CameraInputController
 import com.badlogic.gdx.math.Matrix4
 import com.badlogic.gdx.math.Vector3
+import java.util.ArrayList
 
 import static com.badlogic.gdx.graphics.GL10.*
 
@@ -19,14 +21,14 @@ class Renderer {
    Texture backgroundTexture
    BitmapFont font
    PerspectiveCamera camera
-   Environment lights
+   Environment environment
+   CameraInputController camController
+   ArrayList<DirectionalLight> lights
    ModelBatch modelBatch
    val viewMatrix = new Matrix4()
    
    new() {
-      lights = new Environment();
-      lights.add(new DirectionalLight().set(Color.WHITE, new Vector3(-1, -0.5f, 0).nor()));
-      
+      environment = new Environment();
       spriteBatch = new SpriteBatch();
       modelBatch = new ModelBatch();
 
@@ -38,7 +40,13 @@ class Renderer {
       camera = new PerspectiveCamera(67, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
       viewMatrix.setToOrtho2D(0, 0, 400, 320);
       spriteBatch.setProjectionMatrix(viewMatrix);
+
       setup
+      
+      if (lights.empty) {
+         lights.add(new DirectionalLight().set(Color.WHITE, new Vector3(-1, -0.5f, 0).nor()))
+      }      
+      lights.forEach [ environment.add(it) ]
    }
    
    def render(Simulation simulation, float delta) {
