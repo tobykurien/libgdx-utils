@@ -55,11 +55,11 @@ class Renderer {
       // interface via Gdx.gl
       val gl = Gdx.gl;
       gl.glClear(GL_COLOR_BUFFER_BIT.bitwiseOr(GL_DEPTH_BUFFER_BIT))
-      renderBackground();
+      renderBackground(simulation);
       
       gl.glEnable(GL_DEPTH_TEST);
       gl.glEnable(GL_CULL_FACE);
-      setProjectionAndCamera();
+      setProjectionAndCamera(simulation);
       
       modelBatch.begin(camera);
       modelBatch.render(simulation.instances);
@@ -70,7 +70,7 @@ class Renderer {
 
       spriteBatch.setProjectionMatrix(viewMatrix);
       spriteBatch.begin();
-      drawSprites(spriteBatch)
+      drawSprites(spriteBatch, simulation)
       spriteBatch.end();
    }
    
@@ -87,7 +87,7 @@ class Renderer {
    }
    
    def void setup() {}
-   def void setProjectionAndCamera() {}
-   def void renderBackground() {}
-   def void drawSprites(SpriteBatch spriteBatch) {}
+   def void setProjectionAndCamera(Simulation simulation) {}
+   def void renderBackground(Simulation simulation) {}
+   def void drawSprites(SpriteBatch spriteBatch, Simulation simulation) {}
 }
