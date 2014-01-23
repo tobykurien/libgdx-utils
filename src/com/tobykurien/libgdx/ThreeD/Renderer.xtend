@@ -17,18 +17,19 @@ import java.util.ArrayList
 import static com.badlogic.gdx.graphics.GL10.*
 
 class Renderer {
-   SpriteBatch spriteBatch
-   Texture backgroundTexture
-   BitmapFont font
-   PerspectiveCamera camera
-   Environment environment
-   CameraInputController camController
-   ArrayList<DirectionalLight> lights
-   ModelBatch modelBatch
-   val viewMatrix = new Matrix4()
+   protected SpriteBatch spriteBatch
+   protected Texture backgroundTexture
+   protected BitmapFont font
+   protected PerspectiveCamera camera
+   protected Environment environment
+   protected CameraInputController camController
+   protected ArrayList<DirectionalLight> lights
+   protected ModelBatch modelBatch
+   protected val viewMatrix = new Matrix4()
    
    new() {
       environment = new Environment();
+      lights = newArrayList
       spriteBatch = new SpriteBatch();
       modelBatch = new ModelBatch();
 
