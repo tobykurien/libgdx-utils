@@ -18,6 +18,7 @@ class GameLoop implements Screen {
    }
    
    override hide() {
+      pause
    }
    
    override pause() {
@@ -38,6 +39,7 @@ class GameLoop implements Screen {
    }
    
    override show() {
+      resume
    }
    
 }
