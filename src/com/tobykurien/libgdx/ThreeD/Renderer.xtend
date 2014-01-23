@@ -79,11 +79,11 @@ class Renderer {
    }
    
    def dispose() {
-      lights.forEach [ dispose ]
       spriteBatch.dispose();
       modelBatch.dispose();
-      backgroundTexture.dispose();
-      font.dispose();
+      if (backgroundTexture != null) backgroundTexture.dispose();
+      if (font != null) font.dispose();
+      //if (lights != null) lights.forEach [ dispose ]
    }
    
    def void setup() {}

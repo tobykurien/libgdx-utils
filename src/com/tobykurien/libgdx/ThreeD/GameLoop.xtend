@@ -9,7 +9,7 @@ class GameLoop implements Screen {
    new(Renderer r, Simulation s) {
       renderer = r
       simulation = s
-      s.populate
+      simulation.populate
    }
    
    override dispose() {
