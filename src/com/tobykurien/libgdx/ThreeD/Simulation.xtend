@@ -28,7 +28,9 @@ abstract class Simulation implements Disposable {
    def loadAllModels(String path) {
       // load all models from assets      
       var fd = Gdx.files.internal(path)
+      Gdx.app.debug("load", "Loading from " + path)
       fd.list(".obj").forEach [m|
+         Gdx.app.debug("load", "Loading " + m)
          var model = objLoader.loadModel(m)
          var inst = new ModelInstance(model)
          instances.add(inst)

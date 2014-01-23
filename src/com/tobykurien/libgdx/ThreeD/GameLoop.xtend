@@ -9,6 +9,7 @@ class GameLoop implements Screen {
    new(Renderer r, Simulation s) {
       renderer = r
       simulation = s
+      s.populate
    }
    
    override dispose() {
@@ -20,6 +21,7 @@ class GameLoop implements Screen {
    }
    
    override pause() {
+      simulation.pause
    }
    
    override render(float delta) {
@@ -32,6 +34,7 @@ class GameLoop implements Screen {
    }
    
    override resume() {
+      simulation.resume
    }
    
    override show() {
