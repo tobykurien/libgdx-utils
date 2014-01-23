@@ -35,6 +35,7 @@ abstract class Simulation implements Disposable {
          var inst = new ModelInstance(model)
          instances.add(inst)
          things.put(m.nameWithoutExtension, inst)
+         Gdx.app.debug("load", "Thing is " + m.nameWithoutExtension)
       ]      
    }
    

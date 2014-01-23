@@ -1,13 +1,34 @@
 Classes:
 ========
 
+Main:
+- ApplicationListener or GdxTest
+
 Scene:
 - Model
  - ModelInstance
 
+Input:
+- Gdx.input
+- Gdx.input.setInputProcessor(new InputProcessor(){ ... })
+- CameraInputController to control camera (is InputProcessor)
+  
 Rendering:
 - Environment
  - Light
 - PerspectiveCamera
 - ModelBatch
 - SpriteBatch
+
+Collision:
+- Using distance:
+  - get translations of both objects
+  - check tr1.dst(tr2) < radius
+- Use BoundingBox or Sphere:
+  - Get bounding box: Model.calculateBoundingBox(bb).mul(myInstance.transform)
+  - BoundingBox1.intersects(BoundingBox2)
+  - Sphere1.overlaps(Sphere2)
+- Touching screen to pick item:
+  - camera.getPickRay() -> ray casting to determine which object is interacted with
+  - check if true: Intersector.intersectRayBoundsFast(ray, BoundingBox)
+  
