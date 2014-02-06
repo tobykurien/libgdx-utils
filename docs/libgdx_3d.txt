@@ -3,6 +3,7 @@ Classes:
 
 Main:
 - ApplicationListener or GdxTest
+- Try to split Simulation and Render into separate concerns
 
 Low-level:
 - Mesh: vertices of objects for the scene
@@ -27,8 +28,9 @@ Rendering:
 - PerspectiveCamera
 - ModelBatch: render your ModelInstance objects
 - SpriteBatch: render flat UI elements like HUD, score, etc.
+  - use a separate (Orthogonal) camera for this
 
-Collision:
+Collision detect:
 - Using distance:
   - get translations of both objects
   - check tr1.dst(tr2) < radius
@@ -39,4 +41,7 @@ Collision:
 - Touching screen to pick item:
   - camera.getPickRay() -> ray casting to determine which object is interacted with
   - check if true: Intersector.intersectRayBoundsFast(ray, BoundingBox)
-- Bullet Physics: sophisticated collision detection  
+
+- Bullet Physics: 
+  - 3D version of Box2D. Can be used for collision detection.
+  

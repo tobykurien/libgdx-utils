@@ -4,7 +4,15 @@ Classes:
 - Game: app lifecycle methods
   - Screen: specific screen in a game
 
-Basics:  
+Basics: 
+- Render the scene using an OrthographicCamera
+  - set the viewport width/height, but center of the screen=(0,0)
+  - move camera using camera.combine.setTranslation(1, -1, 0) to make 0,0 top-left
+  - Keep everything at 0,0 when setting up, then move afterwards to keep coords simple
+    - e.g. Sprite origins, lining up sprite with BodyDef etc. 
+- Use Pixmap like a canvas to draw shapes into, then convert to Texture for drawing
+  - Pixmap pm = new Pixmap(16, 16, Pixmap.Format.RGBA8888);
+  - dispose immediately after creating a Texture with it
 - Texture: an image file. Can apply filtering, like TextureFilter.Linear
   - TextureRegion: a rectangular bitmap cut from a Texture
   - TextureAtlas: sprite sheet with data on texture regions in one, created with TexturePacker
@@ -16,17 +24,17 @@ Clipping:
   - see https://github.com/libgdx/libgdx/wiki/Clipping%2C-with-the-use-of-scissorstack
   
 UI:
-- Use Pixmap like a canvas to draw into, then convert to Texture for drawing
-- Use TexturePacker to make a single .atlas file of all UI components
-  - see http://www.gamefromscratch.com/post/2013/10/02/LibGDX-Tutorial-3-Basic-graphics.aspx
-- UI widgets: TextButton, etc. part of Scene2D, can be skinned with a Texture Atlas
 - BitmapFont: sprite sheet plus glyph data used to render text. 
   - Create fonts using Hiero tool: 
     java -cp gdx.jar:gdx-natives.jar:gdx-backend-lwjgl.jar:gdx-backend-lwjgl-natives.jar:extensions/gdx-tools/gdx-tools.jar com.badlogic.gdx.tools.hiero.Hiero
-  - Load the image as a Texture (apply linear filtering)
-  - Create the BitmapFont by loading the .fnt file and the Texture
+  - Create the BitmapFont by loading the .fnt file and the .png
+  - render using BitmapFont.draw()
+  - Use a separate camera to render, to avoid scaling font
 - NinePatch: load nine-patch images (not android-style, specify regions in code)
   - can be used to skin Scene2D elements
+- UI widgets: TextButton, etc. part of Scene2D, can be skinned with a Texture Atlas
+- Use TexturePacker to make a single .atlas file of all UI components for skinning
+  - see http://www.gamefromscratch.com/post/2013/10/02/LibGDX-Tutorial-3-Basic-graphics.aspx
 
 Performance:
 - Object pooling: Pool class
