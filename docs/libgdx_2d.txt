@@ -1,6 +1,65 @@
 Classes:
 ========
 
-- Game
-  - Screen 
-- SpriteBatch
+- Game: app lifecycle methods
+  - Screen: specific screen in a game
+
+Basics:  
+- Texture: an image file. Can apply filtering, like TextureFilter.Linear
+  - TextureRegion: a rectangular bitmap cut from a Texture
+  - TextureAtlas: sprite sheet with data on texture regions in one, created with TexturePacker
+  - Sprite: Texture or TextureRegion with position/rotation/scale info
+- SpriteBatch: draws the sprites to the screen
+
+Clipping:
+- ScissorStack: Render only within specific bounds
+  - see https://github.com/libgdx/libgdx/wiki/Clipping%2C-with-the-use-of-scissorstack
+  
+UI:
+- Use Pixmap like a canvas to draw into, then convert to Texture for drawing
+- Use TexturePacker to make a single .atlas file of all UI components
+  - see http://www.gamefromscratch.com/post/2013/10/02/LibGDX-Tutorial-3-Basic-graphics.aspx
+- UI widgets: TextButton, etc. part of Scene2D, can be skinned with a Texture Atlas
+- BitmapFont: sprite sheet plus glyph data used to render text. 
+  - Create fonts using Hiero tool: 
+    java -cp gdx.jar:gdx-natives.jar:gdx-backend-lwjgl.jar:gdx-backend-lwjgl-natives.jar:extensions/gdx-tools/gdx-tools.jar com.badlogic.gdx.tools.hiero.Hiero
+  - Load the image as a Texture (apply linear filtering)
+  - Create the BitmapFont by loading the .fnt file and the Texture
+- NinePatch: load nine-patch images (not android-style, specify regions in code)
+  - can be used to skin Scene2D elements
+
+Performance:
+- Object pooling: Pool class
+   Pool<MoveToAction> actionPool = new Pool<MoveToAction>(){
+       protected MoveToAction newObject(){
+           return new MoveToAction();
+       }
+   };
+
+Animation:
+- Texture is the image containing all the frames of the animation (sprite sheet)
+- TextureRegion to load sprite sheet and split into sprite frames
+- Animation object takes frame duration and frames, returns keyFrame for specified time
+  - can also take a TextureAtlas
+- Render using Sprite.draw(SpriteBatch)
+- see https://github.com/libgdx/libgdx/wiki/2D-Animation
+
+- Tween animations:
+  - Universal Tween Engine - apply animation tweens to anything
+  - Vector2 and Vector3 classes have lerp() (linear interp) and slerp() (spherical interp)
+  - Interpolation Class
+  - Scene2D has MoveToAction, RotateToAction, ScaleToAction, SequenceAction
+  
+- Scene2D - higher-level 2D framework
+  - see http://www.gamefromscratch.com/page/LibGDX-Tutorial-series.aspx
+  - NinePatchDrawable can load Android-style nine-patch images
+
+- Box2D - apply physics to scene
+  - Create a World object to contain the simulation
+  - Add body definitions to the world
+  - Add fixtures to a body to define it's "collision mask"
+  - use Physics Body Editor to create fixtures for sprites
+  - RUBE is a more comprehensive Box2D editor
+
+
+ 

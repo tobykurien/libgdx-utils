@@ -4,6 +4,14 @@ Classes:
 Main:
 - ApplicationListener or GdxTest
 
+Low-level:
+- Mesh: vertices of objects for the scene
+- Shader: vertex shader and fragment shader to render the Mesh
+ - ShaderProgram compiles the shader
+- Mesh.render() will render using primitive GL type, e.g. GL10.GL_TRIANGLES
+  - OpenGL ES 2.0 requires shaders for rendering
+- FrameBufferObject: wraps OpenGL ES 2.0 frame buffer objects
+
 Scene:
 - Model
  - ModelInstance
@@ -17,8 +25,8 @@ Rendering:
 - Environment
  - Light
 - PerspectiveCamera
-- ModelBatch
-- SpriteBatch
+- ModelBatch: render your ModelInstance objects
+- SpriteBatch: render flat UI elements like HUD, score, etc.
 
 Collision:
 - Using distance:
@@ -31,4 +39,4 @@ Collision:
 - Touching screen to pick item:
   - camera.getPickRay() -> ray casting to determine which object is interacted with
   - check if true: Intersector.intersectRayBoundsFast(ray, BoundingBox)
-  
+- Bullet Physics: sophisticated collision detection  

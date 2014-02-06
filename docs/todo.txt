@@ -1,0 +1,7 @@
+- Universal tween engine: http://code.google.com/p/java-universal-tween-engine/
+- Tiled: https://code.google.com/p/libgdx/wiki/GraphicsTileMaps
+
+Android integrations:
+- accelerometer & gyroscope
+- live wallpaper
+- overlay into activity? Create custom view?
