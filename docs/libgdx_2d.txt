@@ -53,10 +53,10 @@ Animation:
 - see https://github.com/libgdx/libgdx/wiki/2D-Animation
 
 - Tween animations:
-  - Universal Tween Engine - apply animation tweens to anything
   - Vector2 and Vector3 classes have lerp() (linear interp) and slerp() (spherical interp)
   - Interpolation Class
   - Scene2D has MoveToAction, RotateToAction, ScaleToAction, SequenceAction
+  - Universal Tween Engine - apply animation tweens to anything
   
 - Scene2D - higher-level 2D framework
   - see http://www.gamefromscratch.com/page/LibGDX-Tutorial-series.aspx

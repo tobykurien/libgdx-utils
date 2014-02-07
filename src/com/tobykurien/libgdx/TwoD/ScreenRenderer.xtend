@@ -4,23 +4,26 @@ import com.badlogic.gdx.Gdx
 import com.badlogic.gdx.graphics.GL10
 import com.badlogic.gdx.graphics.OrthographicCamera
 import com.badlogic.gdx.graphics.Texture
+import com.badlogic.gdx.graphics.g2d.Sprite
 import com.badlogic.gdx.graphics.g2d.SpriteBatch
 import com.badlogic.gdx.graphics.g2d.TextureRegion
 
+/**
+ * Example of rendering 2d stuff
+ */
 class ScreenRenderer {
    SpriteBatch spriteBatch
    OrthographicCamera camera
    
-   Texture splosion
-   
-   TextureRegion explosion
+   Sprite sprite
 
    def setup() {
       spriteBatch = new SpriteBatch();
       camera = new OrthographicCamera(320, 480);
       
-      splosion = new Texture(Gdx.files.internal("data/explosion.png"))
-      explosion = new TextureRegion(splosion, 256/4, 256/4)
+      var splosion = new Texture(Gdx.files.internal("data/explosion.png"))
+      var explosion = new TextureRegion(splosion, 256/4, 256/4)
+      sprite = new Sprite(explosion)
    }
 
    def render(float delta) {
@@ -35,8 +38,13 @@ class ScreenRenderer {
       spriteBatch.setProjectionMatrix(camera.combined);
       spriteBatch.enableBlending();
 
-      spriteBatch.begin(); //<--  
-      spriteBatch.draw(explosion, 50, 50);
+      spriteBatch.begin(); //<--
+      sprite.draw(spriteBatch)  
       spriteBatch.end(); //<-- 
+   }
+
+   def dispose() {
+      spriteBatch.dispose
+      sprite.texture.dispose
    }
 }
