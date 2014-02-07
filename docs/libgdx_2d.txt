@@ -68,6 +68,6 @@ Animation:
   - Add fixtures to a body to define it's "collision mask"
   - use Physics Body Editor to create fixtures for sprites
   - RUBE is a more comprehensive Box2D editor
-
+  - Be sure to scale between Box2d and Screen pixels, as Box2d only works with small values
 
  
