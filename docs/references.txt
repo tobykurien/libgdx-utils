@@ -1,3 +1,18 @@
 - Wiki: https://github.com/libgdx/libgdx/wiki
 - Tutorial: http://www.gamefromscratch.com/page/LibGDX-Tutorial-series.aspx
 - Frogger example: http://www.rengelbert.com/tutorial.php?id=175
+
+Game assets:
+- http://content.gpwiki.org/index.php/Game_Content_Resources
+- http://www.fontsquirrel.com/
+- http://www.freesound.org/
+- http://openclipart.org/
+- http://gamedevelopment.tutsplus.com/articles/enjoy-these-totally-free-space-based-shoot-em-up-sprites--gamedev-2368
+
+Game loop timing:
+- http://obviam.net/index.php/the-android-game-loop/
+- http://www.koonsolo.com/news/dewitters-gameloop/
+
+Collision detection:
+- http://www.metanetsoftware.com/technique/tutorialA.html
+- http://www.gamedev.net/page/resources/_/technical/game-programming/swept-aabb-collision-detection-and-response-r3084
