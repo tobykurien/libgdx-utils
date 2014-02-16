@@ -8,8 +8,7 @@ Basics:
 - Render the scene using an OrthographicCamera
   - set the viewport width/height, but center of the screen=(0,0)
   - move camera using camera.combine.setTranslation(1, -1, 0) to make 0,0 top-left
-  - Keep everything at 0,0 when setting up, then move afterwards to keep coords simple
-    - e.g. Sprite origins, lining up sprite with BodyDef etc. 
+ - Create BodyDef's at correct position rather than (0,0) for performance reasons
 - Use Pixmap like a canvas to draw shapes into, then convert to Texture for drawing
   - Pixmap pm = new Pixmap(16, 16, Pixmap.Format.RGBA8888);
   - dispose immediately after creating a Texture with it
